@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import DashboardNavbar from "../Components/DashboardNavbar";
 import {
   LineChart,
@@ -19,6 +19,25 @@ import {
 } from "recharts";
 
 const Dashboard = () => {
+  // Random greetings array
+  const greetings = [
+    "Great to see you here! 👋",
+    "Ready to make today productive? 🚀",
+    "Let's monitor those predictions! 📊",
+    "Hope you're having a fantastic day! ✨",
+    "Time to track some data! 📈",
+    "Welcome to your command center! 🎯",
+    "Let's keep those operations safe! 🛡️",
+    "Ready to analyze today's insights? 💡",
+    "Another day, another prediction! 🔮",
+    "Your safety dashboard awaits! 🌟",
+  ];
+
+  // Select a random greeting on component mount
+  const [currentGreeting] = useState(() => {
+    return greetings[Math.floor(Math.random() * greetings.length)];
+  });
+
   const stats = [
     {
       title: "Active Sites",
@@ -130,7 +149,7 @@ const Dashboard = () => {
             <div className="flex items-center justify-between">
               <div>
                 <h1 className="text-3xl font-bold mb-2">
-                  Welcome back, Rajveer! 👋
+                  {currentGreeting}
                 </h1>
                 <p className="text-blue-100 text-lg">
                   Monitor rockfall predictions and manage your mining operations
